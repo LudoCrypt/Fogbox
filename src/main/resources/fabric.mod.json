@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "fogbox",
+	"version": "${version}",
+	"name": "Fogbox",
+	"description": "Turn the fog into a skybox!",
+	"authors": [
+		"LudoCrypt"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/fogbox",
+		"sources": "https://github.com/LudoCrypt/fogbox"
+	},
+	"license": "LGPLv3",
+	"icon": "assets/fogbox/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"net.ludocrypt.fogbox.Fogbox"
+		]
+	},
+	"mixins": [
+		"fogbox.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.11.3",
+		"fabric": "*",
+		"minecraft": "1.17.x",
+		"java": ">=16"
+	}
+}

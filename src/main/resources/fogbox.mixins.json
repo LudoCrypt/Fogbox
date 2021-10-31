@@ -1,0 +1,19 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "net.ludocrypt.fogbox.mixin",
+	"compatibilityLevel": "JAVA_16",
+	"client": [
+		"GameRendererMixin",
+		"MinecraftClientMixin",
+		"ProgramMixin",
+		"ShaderMixin",
+		"SinglePreparationResourceReloaderAccessor",
+		"SpriteAccessor",
+		"SpriteAtlasHolderAccessor",
+		"WorldRendererMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
