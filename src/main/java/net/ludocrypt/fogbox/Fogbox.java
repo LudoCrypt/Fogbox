@@ -24,13 +24,8 @@ public class Fogbox implements ClientModInitializer {
 		if (!FabricLoader.getInstance().isModLoaded("iris") || !FabricLoader.getInstance().isModLoaded("sodium") || !FabricLoader.getInstance().isModLoaded("optifine") || !FabricLoader.getInstance().isModLoaded("optifabric") || !FabricLoader.getInstance().isModLoaded("canvas")) {
 			ShaderPatchManager.INSTANCE.addToAll(ShaderPatch.builder()
 					.sampler(SKYBOX_SAMPLER)
-					.vertex()
-					.declare("out vec4 glPos;")
-					.insertAfter((s) -> s.contains("gl_Position = "), "glPos = gl_Position;")
-					.end()
 					.fragment()
 					.declare("#moj_import <shift_to_skybox.glsl>")
-					.declare("in vec4 glPos;")
 					.wrapCall("linear_fog",
 							"shift_to_skybox_from_fog",
 							"color",
