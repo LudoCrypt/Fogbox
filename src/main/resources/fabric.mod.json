@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"client": [
 			"net.ludocrypt.fogbox.Fogbox"
+		],
+		"modmenu": [
+			"net.ludocrypt.fogbox.config.FogboxModMenuCompat"
 		]
 	},
 	"mixins": [

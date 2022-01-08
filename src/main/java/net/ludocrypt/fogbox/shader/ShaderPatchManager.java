@@ -36,7 +36,9 @@ public final class ShaderPatchManager {
 
 	public void addToAll(ShaderPatch patch, String... all) {
 		for (String shader : all) {
-			this.patches.put(shader, patch);
+			if (!shader.equals("")) {
+				this.patches.put(shader, patch);
+			}
 		}
 	}
 

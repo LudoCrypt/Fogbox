@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
+import net.ludocrypt.fogbox.config.FogboxConfig;
 import net.ludocrypt.fogbox.shader.NoAbstractTexture;
 import net.ludocrypt.fogbox.shader.PatchedSampler;
 import net.ludocrypt.fogbox.shader.ShaderPatch;
@@ -19,6 +20,7 @@ public class Fogbox implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
+		FogboxConfig.init();
 		if (!FabricLoader.getInstance().isModLoaded("iris") || !FabricLoader.getInstance().isModLoaded("sodium") || !FabricLoader.getInstance().isModLoaded("optifine") || !FabricLoader.getInstance().isModLoaded("optifabric") || !FabricLoader.getInstance().isModLoaded("canvas")) {
 			ShaderPatchManager.INSTANCE.addToAll(ShaderPatch.builder()
 					.sampler(SKYBOX_SAMPLER)
@@ -39,6 +41,7 @@ public class Fogbox implements ClientModInitializer {
 							SKYBOX_SAMPLER.samplerName)
 					.end()
 					.build(),
+					FogboxConfig.getInstance().enableClouds ? "position_tex_color_normal" : "",
 					"rendertype_solid",
 					"rendertype_cutout",
 					"rendertype_cutout_mipped",
