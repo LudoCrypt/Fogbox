@@ -1,4 +1,4 @@
-package net.ludocrypt.fogbox.resource;
+package net.ludocrypt.fogbox.shader;
 
 import java.io.IOException;
 import java.util.concurrent.Executor;

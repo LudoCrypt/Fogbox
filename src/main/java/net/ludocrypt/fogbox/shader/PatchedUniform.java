@@ -9,6 +9,7 @@ import net.minecraft.client.gl.GlShader;
 import net.minecraft.client.gl.GlUniform;
 import net.minecraft.client.render.Shader;
 import net.minecraft.util.math.Matrix4f;
+import net.minecraft.util.math.Vector4f;
 
 public final class PatchedUniform {
 	final String name;
@@ -29,8 +30,8 @@ public final class PatchedUniform {
 		return new PatchedUniform(name, Type.FLOAT, u -> u.set(value));
 	}
 
-	public static PatchedUniform ofFloat4(String name, float x, float y, float z, float w) {
-		return new PatchedUniform(name, Type.FLOAT4, u -> u.set(x, y, z, w));
+	public static PatchedUniform ofFloat4(String name, Vector4f vector) {
+		return new PatchedUniform(name, Type.FLOAT4, u -> u.set(vector));
 	}
 
 	public static PatchedUniform ofInt2(String name, int x, int y) {

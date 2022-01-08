@@ -3,6 +3,7 @@ package net.ludocrypt.fogbox.mixin;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -11,6 +12,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.google.common.collect.Lists;
@@ -52,6 +54,7 @@ public abstract class ShaderMixin implements ShaderAccess {
 		ShaderPatchManager.applySamplerPatches((Shader) (Object) this, (patchedSampler) -> {
 			this.patchedSamplers.add(patchedSampler);
 			this.samplerNames.add(patchedSampler.samplerName);
+			this.addSampler(patchedSampler.samplerName, (Supplier<?>) () -> patchedSampler.texture);
 		});
 		ShaderPatchManager.applyUniformPatches((Shader) (Object) this, (patchedUniform, glUniform) -> {
 			this.uniforms.add(glUniform);
@@ -63,6 +66,17 @@ public abstract class ShaderMixin implements ShaderAccess {
 	private void fogbox$initLate(ResourceFactory factory, String name, VertexFormat format, CallbackInfo ci) {
 		ShaderPatchManager.stopPatching();
 	}
+
+	@ModifyVariable(method = "bind", at = @At("STORE"), ordinal = 0)
+	private Object fogbox$bind(Object in) {
+		if (in instanceof Supplier<?> supplier) {
+			return supplier.get();
+		}
+		return in;
+	}
+
+	@Shadow
+	public abstract void addSampler(String name, Object sampler);
 
 	@Override
 	public Collection<PatchedSampler> getPatchedSamplers() {

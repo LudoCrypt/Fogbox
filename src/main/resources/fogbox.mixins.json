@@ -4,13 +4,9 @@
 	"package": "net.ludocrypt.fogbox.mixin",
 	"compatibilityLevel": "JAVA_16",
 	"client": [
-		"GameRendererMixin",
 		"MinecraftClientMixin",
 		"ProgramMixin",
 		"ShaderMixin",
-		"SinglePreparationResourceReloaderAccessor",
-		"SpriteAccessor",
-		"SpriteAtlasHolderAccessor",
 		"WorldRendererMixin"
 	],
 	"injectors": {
