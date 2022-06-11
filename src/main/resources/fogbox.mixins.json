@@ -2,6 +2,7 @@
 	"required": true,
 	"minVersion": "0.8",
 	"package": "net.ludocrypt.fogbox.mixin",
+	"plugin": "net.ludocrypt.fogbox.mixin.FogboxMixinPlugin",
 	"compatibilityLevel": "JAVA_16",
 	"client": [
 		"BackgroundRendererMixin",
