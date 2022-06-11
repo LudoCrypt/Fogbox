@@ -4,6 +4,7 @@
 	"package": "net.ludocrypt.fogbox.mixin",
 	"compatibilityLevel": "JAVA_16",
 	"client": [
+		"BackgroundRendererMixin",
 		"MinecraftClientMixin",
 		"ProgramMixin",
 		"ShaderMixin",

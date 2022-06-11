@@ -44,7 +44,7 @@ public abstract class ShaderMixin implements ShaderAccess {
 	@Unique
 	private final Collection<PatchedSampler> patchedSamplers = Lists.newArrayList();
 
-	@Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/resource/ResourceFactory;getResource(Lnet/minecraft/util/Identifier;)Lnet/minecraft/resource/Resource;"))
+	@Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/resource/ResourceFactory;openAsReader(Lnet/minecraft/util/Identifier;)Ljava/io/BufferedReader;"))
 	private void fogbox$initEarly(ResourceFactory factory, String name, VertexFormat format, CallbackInfo ci) {
 		ShaderPatchManager.startPatching(name);
 	}
